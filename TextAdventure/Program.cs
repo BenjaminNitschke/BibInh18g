@@ -14,12 +14,12 @@ namespace TextAdventure
 				: "You found the Treasure, good work. Game Over.";
 			Console.WriteLine(outcome);
 
-            int counter = 10;
-		    while(counter > 0)
-		    {
-			    Console.WriteLine(counter);
-			    counter--;
-		    }      
+            		int counter = 10;
+		    	while(counter > 0)
+		    	{
+				Console.WriteLine(counter);
+				counter--;
+		    	}      
 		}
 	}
 }
