@@ -1,3 +1,9 @@
+# Exclude some C# stuff
+v15/
+bin/
+obj/
+*.user
+
 # Prerequisites
 *.d
 
