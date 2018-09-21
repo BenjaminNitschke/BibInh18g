@@ -13,6 +13,10 @@ namespace TextAdventure
 				? "Bad choice, a bear is here and kicking your ass. Game Over."
 				: "You found the Treasure, good work. Game Over.";
 			Console.WriteLine(outcome);
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(i);
+            }
 		}
 	}
 }
