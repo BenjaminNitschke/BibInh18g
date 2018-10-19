@@ -59,3 +59,8 @@ Mkfile.old
 dkms.conf
 TextAdventure/app.config
 packages/
+GameOfLife/app.config
+GameOfLife/packages.config
+GameOfLife/GameOfLife.csproj
+GameOfLife/GameOfLife.csproj
+GameOfLife/GameOfLife.csproj
