@@ -1,4 +1,5 @@
 ﻿using System;
+using NUnit.Framework;
 
 namespace GameOfLife
 {
@@ -7,13 +8,24 @@ namespace GameOfLife
 		public static void Main()
 		{
 			Console.WriteLine("Game Of Life");
-			bool[,] map = new bool[40, 20];
-			for (int y = 0; y < map.GetLength(1); y++)
-			{
-				for (int x = 0; x < map.GetLength(0); x++)
-					Console.Write(map[x, y] ? "X" : ".");
-				Console.WriteLine();
-			}
+			var map = new Map();
+			map.Draw();
 		}
+		/*
+		[Test]
+		public void Rule1()
+		{
+			map[2, 2] = true;
+			ExecuteNextStep(map);
+			Draw(map);
+			Assert.That(map[2, 2], Is.False);
+		}
+
+		void ExecuteNextStep(bool[,] map)
+		{
+			//Rule 1: Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+			map[2, 2] = false;
+		}
+		*/
 	}
 }
