@@ -12,7 +12,7 @@ namespace GameOfLife
 			data[3, 3] = true;
 		}
 
-		private readonly bool[,] data = new bool[40, 20];
+		public readonly bool[,] data = new bool[40, 20];
 
 		public void Draw()
 		{
@@ -22,6 +22,12 @@ namespace GameOfLife
 					Console.Write(data[x, y] ? "X" : ".");
 				Console.WriteLine();
 			}
+		}
+
+		public void ExecuteNextStep()
+		{
+			//Rule 1: Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+			data[2, 2] = false;
 		}
 	}
 }
