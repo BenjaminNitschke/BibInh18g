@@ -13,8 +13,13 @@ namespace GameOfLife
 
         public void Update()
         {
-            data[0, 0] = false;
-            data[2, 2] = false;
+            for (int y = 0; y < this.data.GetLength(1); y++)
+            {
+                for (int x = 0; x < this.data.GetLength(0); x++)
+                {
+                    data[x, y] = false;
+                }
+            }
         }
 
         public void Draw()
