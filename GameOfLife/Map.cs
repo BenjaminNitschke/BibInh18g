@@ -4,15 +4,11 @@ namespace GameOfLife
 {
     public class Map
     {
-        private bool[,] data;
+        private readonly bool[,] data;
 
         public Map(int width, int height)
         {
             data = new bool[width, height];
-            data[2, 2] = true;
-            data[2, 3] = true;
-            data[3, 2] = true;
-            data[3, 3] = true;
         }
 
         public void Update()
