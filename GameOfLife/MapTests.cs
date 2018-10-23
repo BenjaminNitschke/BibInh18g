@@ -21,13 +21,7 @@ namespace GameOfLife
             map.Update();
 
             //Assert
-            for(int y = 0; y < map.GetData().GetLength(1); y++)
-            {
-                for (int x = 0; x < map.GetData().GetLength(0); x++)
-                {
-                    Assert.That(map.GetData()[x, y], Is.False);
-                }
-            }
+            CheckMapIsEmpty(map);
         }
 
         [Test]
@@ -41,7 +35,7 @@ namespace GameOfLife
             map.Update();
 
             //Assert
-            Assert.That(map.GetData()[0, 0], Is.False);
+            CheckMapIsEmpty(map);
         }
 
         [Test, Description("Any live cell with fewer than two live neighbors dies, as if by underpopulation")]
@@ -59,6 +53,17 @@ namespace GameOfLife
 
             // Draw map
             map.Draw();
+        }
+
+        private void CheckMapIsEmpty(Map map)
+        {
+            for (int y = 0; y < map.GetData().GetLength(1); y++)
+            {
+                for (int x = 0; x < map.GetData().GetLength(0); x++)
+                {
+                    Assert.That(map.GetData()[x, y], Is.False);
+                }
+            }
         }
     }
 }
