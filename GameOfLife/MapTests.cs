@@ -20,7 +20,28 @@ namespace GameOfLife
 				Assert.That(map.data[x, y], Is.False);
 		}
 
-		[Test]
+        [Test]
+        public void OneCellDies()
+        {
+            //Arrange
+            var map = new Map(3, 3);
+            map.data[2, 2] = true;
+
+            //Act
+
+            map.ExecuteNextStep();
+
+            //Assert
+            for (int y = 0; y < 3; y++)
+                for (int x = 0; x < 3; x++)
+                {
+                    Assert.That(map.data[x, y], Is.False);
+                }
+
+
+        }
+
+        [Test]
 		public void Rule1()
 		{
 			var map = new Map(3, 3);
