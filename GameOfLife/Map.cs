@@ -32,8 +32,10 @@ namespace GameOfLife
 
 		public void ExecuteNextStep()
 		{
-			//Rule 1: Any live cell with fewer than two live neighbors dies, as if by underpopulation.
-			data[2, 2] = false;
+            //Rule 1: Any live cell with fewer than two live neighbors dies, as if by underpopulation.
+            for (int y = 0; y < data.GetLength(1); y++)
+            for (int x = 0; x < data.GetLength(0); x++)
+                data[x, y] = false;
 		}
 	}
 }
