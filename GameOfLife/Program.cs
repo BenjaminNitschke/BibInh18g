@@ -1,5 +1,4 @@
 ﻿using System;
-using NUnit.Framework;
 
 namespace GameOfLife
 {
@@ -8,18 +7,10 @@ namespace GameOfLife
 		public static void Main()
 		{
 			Console.WriteLine("Game Of Life");
-			var map = new Map();
+			var map = new Map(40, 20);
+			map.Seed();
 			map.Draw();
-		}
-
-		[Test]
-		public void Rule1()
-		{
-			var map = new Map();
-			map.data[2, 2] = true;
-			map.ExecuteNextStep();
-			map.Draw();
-			Assert.That(map.data[2, 2], Is.False);
+			//TODO: loop
 		}
 	}
 }

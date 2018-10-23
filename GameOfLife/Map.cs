@@ -4,7 +4,14 @@ namespace GameOfLife
 {
 	public class Map
 	{
-		public Map()
+		public Map(int width, int height)
+		{
+		  data = new bool[width, height];
+		}
+
+		public readonly bool[,] data;
+
+		public void Seed()
 		{
 			data[2, 2] = true;
 			data[2, 3] = true;
@@ -12,7 +19,6 @@ namespace GameOfLife
 			data[3, 3] = true;
 		}
 
-		public readonly bool[,] data = new bool[40, 20];
 
 		public void Draw()
 		{
