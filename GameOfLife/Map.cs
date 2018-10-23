@@ -13,6 +13,7 @@ namespace GameOfLife
 
         public void Update()
         {
+            data[0, 0] = false;
             data[2, 2] = false;
         }
 

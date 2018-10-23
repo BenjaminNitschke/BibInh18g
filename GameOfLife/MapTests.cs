@@ -30,6 +30,20 @@ namespace GameOfLife
             }
         }
 
+        [Test]
+        public void OneCellDies()
+        {
+            // Arrange
+            Map map = new Map(3, 3);
+            map.GetData()[0, 0] = true;
+
+            // Act
+            map.Update();
+
+            //Assert
+            Assert.That(map.GetData()[0, 0], Is.False);
+        }
+
         [Test, Description("Any live cell with fewer than two live neighbors dies, as if by underpopulation")]
         public void Rule1()
         {
