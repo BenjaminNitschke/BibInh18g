@@ -10,12 +10,19 @@ namespace GameOfLife
             if (string.IsNullOrEmpty(numbers))
                 return 0;
 
-            return int.Parse(numbers);
+            string[] values = numbers.Split('+');
+
+            int result = 0;
+            for (int i = 0; i < values.Length; i++)
+                result += int.Parse(values[i]);
+
+            return result;
         }
 
         [TestCase("", 0)]
         [TestCase("1", 1)]
         [TestCase("3", 3)]
+        [TestCase("1+2", 3)]
         public void CheckCalculator(string numbers, int expected)
         {
             Assert.That(Add(numbers), Is.EqualTo(expected));
