@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace GameOfLife
 {
@@ -15,38 +14,27 @@ namespace GameOfLife
 			map.ExecuteNextStep();
 
 			//Assert
+			CheckMapIsEmpty(map);
+		}
+
+		private static void CheckMapIsEmpty(Map map)
+		{
+			map.Draw();
 			for (int y = 0; y < 3; y++)
 			for (int x = 0; x < 3; x++)
 				Assert.That(map.data[x, y], Is.False);
 		}
 
-        [Test]
-        public void OneCellDies()
-        {
-            //Arrange
-            var map = new Map(3, 3);
-            map.data[1, 2] = true;
+		[Test]
+		public void OneCellDies()
+		{
+			var map = new Map(3, 3);
+			map.data[0, 0] = true;
+			map.ExecuteNextStep();
+			CheckMapIsEmpty(map);
+		}
 
-            //Act
-
-            map.ExecuteNextStep();
-
-            //Assert
-            CheckMapIsEmpty(map);
-        }
-
-        private void CheckMapIsEmpty(Map map)
-        {
-            for (int y = 0; y < 3; y++)
-            for (int x = 0; x < 3; x++)
-               Assert.That(map.data[x, y], Is.False);
-        }
-                
-
-
-        
-
-        [Test]
+		[Test]
 		public void Rule1()
 		{
 			var map = new Map(3, 3);
