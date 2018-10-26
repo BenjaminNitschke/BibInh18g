@@ -10,7 +10,6 @@ namespace GameOfLife
             return 0;
         }
 
-
         [Test, Description("Empty string should return zero")]
         public void Empty_String()
         {
