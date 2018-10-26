@@ -15,14 +15,13 @@ namespace GameOfLife
         {
             // Assign
             string numbers = "";
-            int expected = 0;
             int result;
 
             // Act
             result = Add(numbers);
 
             // Assert
-            Assert.That(expected, Is.EqualTo(result));
+            Assert.That(result, Is.EqualTo(0));
         }
     }
 }
