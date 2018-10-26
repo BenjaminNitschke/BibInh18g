@@ -17,7 +17,11 @@ namespace GameOfLife
             {
                 for (int x = 0; x < this.data.GetLength(0); x++)
                 {
-                    data[x, y] = false;
+                    int neighbors = GetNeighbors(x, y);
+                    if (neighbors == 2 || neighbors == 3)
+                        data[x, y] = true;
+                    else
+                        data[x, y] = false;
                 }
             }
         }
@@ -38,6 +42,27 @@ namespace GameOfLife
                 }
                 Console.WriteLine();
             }
+        }
+
+        private int GetNeighbors(int x, int y)
+        {
+            int neighbors = 0;
+
+            for (int checkY = 0; checkY < this.data.GetLength(1); checkY++)
+            {
+                for (int checkX = 0; checkX < this.data.GetLength(0); checkX++)
+                {
+                    if (x + checkX >= 0 && checkX < data.GetLength(0) &&
+                        y + checkY >= 0 && checkY < data.GetLength(1) &&
+                        data[x + checkX, y + checkY])
+                    {
+                        neighbors++;
+                    }
+                }
+                Console.WriteLine();
+            }
+
+            return neighbors;
         }
 
         public bool[,] GetData()
