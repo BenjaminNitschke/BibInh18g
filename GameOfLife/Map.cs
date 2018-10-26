@@ -48,9 +48,9 @@ namespace GameOfLife
         {
             int neighbors = 0;
 
-            for (int checkY = 0; checkY < this.data.GetLength(1); checkY++)
+            for (int checkY = -1; checkY <= 1; checkY++)
             {
-                for (int checkX = 0; checkX < this.data.GetLength(0); checkX++)
+                for (int checkX = -1; checkX <= 1; checkX++)
                 {
                     if (x + checkX >= 0 && checkX < data.GetLength(0) &&
                         y + checkY >= 0 && checkY < data.GetLength(1) &&
