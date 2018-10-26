@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System;
 
 namespace GameOfLife
 {
@@ -6,8 +7,18 @@ namespace GameOfLife
     {
         public int Add(string numbers)
         {
-            //int[] values = numbers.Split('-');
-            return 0;
+            if (string.IsNullOrEmpty(numbers))
+                return 0;
+
+            return int.Parse(numbers);
+        }
+
+        [TestCase("", 0)]
+        [TestCase("1", 1)]
+        [TestCase("3", 3)]
+        public void CheckCalculator(string numbers, int expected)
+        {
+            Assert.That(Add(numbers), Is.EqualTo(expected));
         }
 
         [Test, Description("Empty string should return zero")]
@@ -22,6 +33,20 @@ namespace GameOfLife
 
             // Assert
             Assert.That(result, Is.EqualTo(0));
+        }
+
+        [Test, Description("Return a single number in a string as a number")]
+        public void SingleNumberInString()
+        {
+            // Assign
+            string numbers = "1";
+            int result;
+
+            // Act
+            result = Add(numbers);
+
+            // Assert
+            Assert.That(result, Is.EqualTo(1));
         }
     }
 }
