@@ -36,7 +36,9 @@ namespace GameOfLife
 			for (int x = 0; x < data.GetLength(0); x++)
 			{
 				int neighbors = GetNeighbors(x, y);
-				if (neighbors == 2 || neighbors == 3)
+				if (data[x, y] && neighbors == 2)
+					data[x, y] = true;
+				else if (neighbors == 3)
 					data[x, y] = true;
 				else
 					data[x, y] = false;

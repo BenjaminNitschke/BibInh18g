@@ -61,3 +61,5 @@ TextAdventure/app.config
 packages/
 GameOfLife/_NCrunch_GameOfLife/GameOfLife.crunchsolution.cache
 GameOfLife/_NCrunch_GameOfLife/GameOfLife.executiontimes.cache
+PasswordVerifier/_NCrunch_PasswordVerifier/PasswordVerifier.crunchsolution.cache
+PasswordVerifier/_NCrunch_PasswordVerifier/PasswordVerifier.executiontimes.cache
