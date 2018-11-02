@@ -19,7 +19,10 @@ namespace GameOfLife
                 {
                     int neighbors = GetNeighbors(x, y);
                     if (neighbors == 2 || neighbors == 3)
-                        data[x, y] = true;
+                    {
+                        if (neighbors == 3)
+                            data[x, y] = true;
+                    }
                     else
                         data[x, y] = false;
                 }
@@ -33,18 +36,18 @@ namespace GameOfLife
                 for (int x = 0; x < this.data.GetLength(0); x++)
                 {
                     if (this.data[x, y])
-                        Console.Write(".X");
+                        Console.Write("|X");
                     else
-                        Console.Write(". ");
+                        Console.Write("|  ");
 
                     if (x == this.data.GetLength(0) - 1)
-                        Console.Write(".");
+                        Console.Write("|");
                 }
                 Console.WriteLine();
             }
         }
 
-        private int GetNeighbors(int x, int y)
+        public int GetNeighbors(int x, int y)
         {
             int neighbors = 0;
 
@@ -52,17 +55,31 @@ namespace GameOfLife
             {
                 for (int checkX = -1; checkX <= 1; checkX++)
                 {
-                    if (x + checkX >= 0 && checkX < data.GetLength(0) &&
-                        y + checkY >= 0 && checkY < data.GetLength(1) &&
-                        data[x + checkX, y + checkY])
+                    if (IsNotCenter(checkX, checkY) && 
+                        IsInMap(x + checkX, y + checkY) && 
+                        IsSet(x + checkX, y + checkY))
                     {
                         neighbors++;
                     }
                 }
-                Console.WriteLine();
             }
 
             return neighbors;
+        }
+
+        private bool IsNotCenter(int checkX, int checkY)
+        {
+            return (checkX != 0 || checkY != 0);
+        }
+
+        private bool IsInMap(int x, int y)
+        {
+            return x >= 0 && x < data.GetLength(0) && y >= 0 && y < data.GetLength(1);
+        }
+
+        private bool IsSet(int x, int y)
+        {
+            return data[x, y];
         }
 
         public bool[,] GetData()
