@@ -6,7 +6,7 @@ namespace GameOfLife
 	{
 		public Map(int width, int height)
 		{
-		  data = new bool[width, height];
+			data = new bool[width, height];
 		}
 
 		public readonly bool[,] data;
@@ -45,14 +45,28 @@ namespace GameOfLife
 
 		private int GetNeighbors(int x, int y)
 		{
-			int result = 0;
+			int numberOfNeighbors = 0;
 			for (int checkY = -1; checkY <= 1; checkY++)
 			for (int checkX = -1; checkX <= 1; checkX++)
-				if (x+checkX >= 0 && x+ checkX < data.GetLength(0) &&
-						y+checkY >= 0 && y+ checkY < data.GetLength(1) &&
-						data[x+checkX, y+checkY])
-					result++;
-			return result;
+				if (IsNotCenter(checkX, checkY) && IsInMap(x + checkX, y + checkY) &&
+						IsSet(x + checkX, y + checkY))
+					numberOfNeighbors++;
+			return numberOfNeighbors;
+		}
+
+		private static bool IsNotCenter(int checkX, int checkY)
+		{
+			return checkX != 0 || checkY != 0;
+		}
+
+		private bool IsInMap(int x, int y)
+		{
+			return x >= 0 && x < data.GetLength(0) && y >= 0 && y < data.GetLength(1);
+		}
+
+		private bool IsSet(int x, int y)
+		{
+			return data[x, y];
 		}
 	}
 }

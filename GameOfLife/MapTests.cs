@@ -7,13 +7,8 @@ namespace GameOfLife
 		[Test]
 		public void EmptyMapStaysEmpty()
 		{
-			//Arrange
 			var map = new Map(3, 3);
-
-			//Act
 			map.ExecuteNextStep();
-
-			//Assert
 			CheckMapIsEmpty(map);
 		}
 
@@ -61,6 +56,28 @@ namespace GameOfLife
 			map.ExecuteNextStep();
 			// Assert
 			Assert.That(map.data[0, 0], Is.True);
+		}
+
+		[Test]
+		public void CellShouldNotCountItselfAsNeighbor()
+		{
+			var map = new Map(3, 3);
+			map.data[0, 0] = true;
+			map.data[1, 0] = true;
+			map.ExecuteNextStep();
+			CheckMapIsEmpty(map);
+		}
+
+		[Test]
+		public void Rule3()
+		{
+			//Any live cell with more than three live neighbors dies, as if by overpopulation.
+		}
+		
+		[Test]
+		public void Rule4()
+		{
+			//Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
 		}
 	}
 }
