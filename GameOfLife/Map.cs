@@ -7,18 +7,43 @@ namespace GameOfLife
 		public Map(int width, int height)
 		{
 			current = new bool[width, height];
+<<<<<<< HEAD
 		}
 
 		public readonly bool[,] current;
 
 		public void Seed()
 		{
+=======
+			next = new bool[width, height];
+		}
+
+		public bool[,] current;
+		public bool[,] next;
+
+		public void Seed()
+		{
+			// Stable 2x2 block
+>>>>>>> master
 			current[2, 2] = true;
 			current[2, 3] = true;
 			current[3, 2] = true;
 			current[3, 3] = true;
+<<<<<<< HEAD
 		}
+=======
+			// 3x1 blinking pattern
+			current[0, 10] = true;
+			current[1, 10] = true;
+			current[2, 10] = true;
+>>>>>>> master
 
+			Random rnd = new Random();
+			for (int x = 5; x < 30; x++)
+			for (int y = 2; y < 18; y++)
+				if (rnd.Next(2) == 1)
+					current[x, y] = true;
+		}
 
 		public void Draw()
 		{
@@ -41,10 +66,17 @@ namespace GameOfLife
 				else
 					next[x, y] = false;
 			}
+<<<<<<< HEAD
             //swap
             var temp = current;
             current = next;
             next = current;
+=======
+			// Swap
+			var temp = current;
+			current = next;
+			next = temp;
+>>>>>>> master
 		}
 
 		private int GetNeighbors(int x, int y)
