@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace GameOfLife
 {
@@ -6,11 +7,17 @@ namespace GameOfLife
     {
         public static void Main()
         {
-          Console.WriteLine("Game Of Life");
-          var map = new Map(40, 20);
-          map.Seed();
-          map.Draw();
-          //TODO: loop
+            Console.WriteLine("Game Of Life");
+            var map = new Map(4, 4);
+            map.Seed();
+            //TODO: loop
+            while (true)
+            {
+                Console.Clear();
+                map.Update();
+                map.Draw();
+                Thread.Sleep(500);
+            }
         }
     }
 }

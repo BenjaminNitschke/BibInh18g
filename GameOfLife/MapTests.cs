@@ -122,6 +122,31 @@ namespace GameOfLife
             Assert.That(map.GetData()[1, 1], Is.True);
         }
 
+        [Test]
+        public void StableTreeCellPattern()
+        {
+            Map map = new Map(3, 3);
+            // Set variables
+            // 0 | x | 0
+            // 0 | x | 0
+            // 0 | x | 0
+            map.GetData()[1, 0] = true;
+            map.GetData()[1, 1] = true;
+            map.GetData()[1, 2] = true;
+
+
+            // Update game
+            map.Update();
+
+            // Draw map
+            map.Draw();
+
+            // Check conditions
+            // 0 | 0 | 0
+            // 0 | x | 0
+            Assert.That(map.GetData()[0, 1], Is.True);
+        }
+
         private void CheckMapIsEmpty(Map map)
         {
             for (int y = 0; y < map.GetData().GetLength(1); y++)
