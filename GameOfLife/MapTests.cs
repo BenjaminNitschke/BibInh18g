@@ -71,13 +71,35 @@ namespace GameOfLife
 		[Test]
 		public void Rule3()
 		{
-			//Any live cell with more than three live neighbors dies, as if by overpopulation.
+            //Any live cell with more than three live neighbors dies, as if by overpopulation.
+            var map = new Map(3, 3);
+            map.data[0, 1] = true;
+            map.data[1, 0] = true;
+            map.data[1, 2] = true;
+            map.data[2, 1] = true;
+
+            map.data[1, 1] = true;
+
+            map.ExecuteNextStep();
+
+            Assert.That(map.data[1, 1], Is.False);
 		}
 		
 		[Test]
 		public void Rule4()
 		{
-			//Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+            //Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+            var map = new Map(3, 3);
+
+            map.data[0, 1] = true;
+            map.data[1, 0] = true;
+            map.data[1, 2] = true;
+
+            map.data[1, 1] = false;
+
+            map.ExecuteNextStep();
+
+            Assert.That(map.data[1, 1], Is.True);
 		}
 	}
 }
