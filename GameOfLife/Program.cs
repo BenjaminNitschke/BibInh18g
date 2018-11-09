@@ -8,7 +8,7 @@ namespace GameOfLife
         {
           Console.WriteLine("Game Of Life");
           var map = new Map(40, 20);
-          map.Seed();
+          //map.Seed();
           map.Draw();
           //TODO: loop
         }
