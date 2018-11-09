@@ -21,7 +21,7 @@ namespace GameOfLife
 		}
 
 		[Test]
-		public void OneCellDies()
+		public void Rule1OneCellDies()
 		{
 			var map = new Map(3, 3);
 			map.data[0, 0] = true;
@@ -30,15 +30,7 @@ namespace GameOfLife
 		}
 
 		[Test]
-		public void Rule1()
-		{
-			var map = new Map(3, 3);
-			map.data[2, 2] = true;
-			map.ExecuteNextStep();
-			map.Draw();
-			Assert.That(map.data[2, 2], Is.False);
-		}
-
+		
 		/// <summary>
 		/// XX.
 		/// X..
@@ -69,15 +61,32 @@ namespace GameOfLife
 		}
 
 		[Test]
-		public void Rule3()
+		public void CellWithMoreThanThreeNeighborsDies()
 		{
-			//Any live cell with more than three live neighbors dies, as if by overpopulation.
-		}
+            //Any live cell with more than three live neighbors dies, as if by overpopulation.
+            var map = new Map(3, 3);
+            //Cell to check
+            map.data[1, 1] = true;
+            //Create 4 neighbours
+            map.data[1, 0] = true;
+            map.data[0, 1] = true;
+            map.data[2, 1] = true;
+            map.data[1, 2] = true;
+            map.ExecuteNextStep();
+            Assert.That(map.data[1, 1], Is.False);
+        }
 		
 		[Test]
 		public void Rule4()
 		{
-			//Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
-		}
-	}
+            var map = new MapTests(3, 3);
+            //Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.
+
+            map.data[1, 0] = true;
+            map.data[0, 1] = true;
+            map.data[2, 1] = true;
+            map.ExecuteNextStep();
+            Assert.That(map.data[1, 1], Is.True);
+        }
+    }
 }
