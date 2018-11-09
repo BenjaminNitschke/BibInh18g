@@ -15,16 +15,16 @@ namespace GameOfLife
 		private static void CheckMapIsEmpty(Map map)
 		{
 			map.Draw();
-			for (int y = 0; y < map.data.GetLength(1); y++)
-			for (int x = 0; x < map.data.GetLength(0); x++)
-				Assert.That(map.data[x, y], Is.False);
+			for (int y = 0; y < map.current.GetLength(1); y++)
+			for (int x = 0; x < map.current.GetLength(0); x++)
+				Assert.That(map.current[x, y], Is.False);
 		}
 
 		[Test]
 		public void Rule1OneCellDies()
 		{
 			var map = new Map(3, 3);
-			map.data[0, 0] = true;
+			map.current[0, 0] = true;
 			map.ExecuteNextStep();
 			CheckMapIsEmpty(map);
 		}
@@ -41,21 +41,21 @@ namespace GameOfLife
 		{
 			// Assign
 			var map = new Map(3, 3);
-			map.data[0, 0] = true;
-			map.data[0, 1] = true;
-			map.data[1, 0] = true;
+			map.current[0, 0] = true;
+			map.current[0, 1] = true;
+			map.current[1, 0] = true;
 			// Act
 			map.ExecuteNextStep();
 			// Assert
-			Assert.That(map.data[0, 0], Is.True);
+			Assert.That(map.current[0, 0], Is.True);
 		}
 
 		[Test]
 		public void CellShouldNotCountItselfAsNeighbor()
 		{
 			var map = new Map(3, 3);
-			map.data[0, 0] = true;
-			map.data[1, 0] = true;
+			map.current[0, 0] = true;
+			map.current[1, 0] = true;
 			map.ExecuteNextStep();
 			CheckMapIsEmpty(map);
 		}
@@ -66,14 +66,14 @@ namespace GameOfLife
             //Any live cell with more than three live neighbors dies, as if by overpopulation.
             var map = new Map(3, 3);
             //Cell to check
-            map.data[1, 1] = true;
+            map.current[1, 1] = true;
             //Create 4 neighbours
-            map.data[1, 0] = true;
-            map.data[0, 1] = true;
-            map.data[2, 1] = true;
-            map.data[1, 2] = true;
+            map.current[1, 0] = true;
+            map.current[0, 1] = true;
+            map.current[2, 1] = true;
+            map.current[1, 2] = true;
             map.ExecuteNextStep();
-            Assert.That(map.data[1, 1], Is.False);
+            Assert.That(map.current[1, 1], Is.False);
         }
 		
 		[Test]
