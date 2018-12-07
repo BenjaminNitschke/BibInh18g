@@ -80,7 +80,7 @@ namespace GameOfLife
 			return x >= 0 && x < current.GetLength(0) && y >= 0 && y < current.GetLength(1);
 		}
 
-		public bool IsSet(int x, int y)
+		private bool IsSet(int x, int y)
 		{
 			return current[x, y];
 		}
