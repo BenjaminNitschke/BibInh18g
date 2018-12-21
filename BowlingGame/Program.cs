@@ -26,29 +26,25 @@ namespace BowlingGame
 
 	public class Game
 	{
-		public Game(int[] pins)
-		{
-			this.pins = pins;
-		}
-
-		private readonly int[] pins;
+		public Game(int[] pins) => this.pins = pins;
+        private readonly int[] pins;
 
 		public int CalculatePoints()
         {
 			int result = 0;
             int roll = 0;
             for (int round = 0; round < 10; round++, roll += 2)
-            {
-                if (pins[roll] == 10)
-                    result += 10 + pins[roll + 1] + pins[roll-- + 2];
-                else if (pins[roll] + pins[roll + 1] == 10)
-                    result += 10 + pins[roll + 2];
-                else
-                    result += pins[roll] + pins[roll+1];
-            }
-			return result;
+                result += IsStrike(roll)
+                    ? 10 + pins[roll + 1] + pins[roll-- + 2]
+                    : IsSpare(roll)
+                        ? 10 + pins[roll + 2]
+                        : pins[roll] + pins[roll + 1];
+            return result;
 		}
-	}
+
+        private bool IsStrike(int roll) => pins[roll] == 10;
+        private bool IsSpare(int roll) => pins[roll] + pins[roll + 1] == 10;
+    }
 
 	public class GameTests
 	{

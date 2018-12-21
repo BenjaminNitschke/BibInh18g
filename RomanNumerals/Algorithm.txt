@@ -1,0 +1,12 @@
+Roman Numerals Algorithm
+========================
+
+Input Number = 42
+Result = ""
+Loop until Number reaches 0
+	Go through all possible Symbols from Highest to Lowest (M, D, C, L, X, V, I)
+		If number is >= Symbol, add Symbol to Result, reduce Number
+End Loop
+Output Result
+
+Improve by adding CM=900, CD=400, XC=90, XL=40, IX=9, IV=4 to get all the 9 and 4-cases correct! 
