@@ -60,3 +60,6 @@ dkms.conf
 app.config
 packages/
 _NCrunch*
+Library/
+ProjectSettings/
+Temp/
