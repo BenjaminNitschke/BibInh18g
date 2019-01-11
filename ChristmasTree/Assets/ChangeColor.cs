@@ -20,8 +20,7 @@ public class ChangeColor : MonoBehaviour
 		var interpolation = 1 + time / TimeToChange;
 		var interpolatedHue = currentHue * (1-interpolation) + nextHue * interpolation;
 		material.color = Color.HSVToRGB(interpolatedHue, 1, 1);
-		Debug.Log("Interpolation: " + interpolation + ", hue: " + interpolatedHue + ", color: " +
-							material.color);
+		//Debug.Log("Interpolation: " + interpolation + ", hue: " + interpolatedHue + ", color: " + material.color);
 		time += Time.deltaTime;
 		if (time < 0)
 			return;
