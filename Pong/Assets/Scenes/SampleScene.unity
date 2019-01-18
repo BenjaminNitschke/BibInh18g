@@ -146,7 +146,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.14778392, g: 0.189369, b: 0.254717, a: 0}
+  m_BackGroundColor: {r: 0.18640976, g: 0.36544737, b: 0.6698113, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
@@ -160,7 +160,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -184,7 +184,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 534669902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -261,7 +261,7 @@ Transform:
   m_GameObject: {fileID: 895491749}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.41, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -277,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fc88034d8c39c94b8fab6bfeb27624f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: {x: 0.03, y: 0.02}
+  velocity: {x: 0.08, y: 0.05}
 --- !u!1 &1138687869
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1138687869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.35, y: -0.1, z: 0}
+  m_LocalPosition: {x: -6.466667, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -365,9 +365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92351909088667947b4a623f278bdfde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinY: -4
-  MaxY: 4
-  Speed: 5
+  Speed: 0.2
 --- !u!1 &1363580300
 GameObject:
   m_ObjectHideFlags: 0
