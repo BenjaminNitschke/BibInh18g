@@ -10,7 +10,7 @@ public class EnemyAi : MonoBehaviour
 	}
 
 	private float startPositionX;
-	private float velocity = 0;
+	public float velocity = 0;
 	private float offset = 0;
 	private const float SpeedPerSecond = 3.0f;
 
@@ -20,6 +20,7 @@ public class EnemyAi : MonoBehaviour
 		if (offset > MaximumOffset || offset < MinimumOffset)
 		{
 			velocity *= -1;
+			offset += velocity * Time.deltaTime;
 			transform.position = new Vector3(startPositionX+offset, transform.position.y-MoveCloserToPlayerPerDirectionChange);
 		}
 		transform.position = new Vector3(startPositionX+offset, transform.position.y);

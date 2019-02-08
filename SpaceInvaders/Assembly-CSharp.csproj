@@ -63,6 +63,8 @@
   <ItemGroup>
     <Compile Include="Assets\ControlShip.cs" />
     <Compile Include="Assets\EnemyAi.cs" />
+    <Compile Include="Assets\GameLogic.cs" />
+    <Compile Include="Assets\MissileCollider.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Boje/Documents/GitHub/BibInh18g/SpaceInvaders/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
