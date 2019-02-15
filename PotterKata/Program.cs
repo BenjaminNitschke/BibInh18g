@@ -46,31 +46,18 @@ namespace PotterKata
         [TestCase(5, 5, 5, 5, 5)]
         public void BuySameBooks(params int[] numbers)
         {
-            // Arange
-            BookCalculator calculator = new BookCalculator();
             decimal targetPrice = numbers.Length * pricePerBook;
-
-            // Act
             decimal result = calculator.Calculate(numbers);
-
-            // Assert
             Assert.That(result, Is.EqualTo(targetPrice));
         }
 
         [TestCase(1, 2)]
         [TestCase(5, 3)]
         [TestCase(1, 4)]
-        // Two different books give a 5% discount
-        public void BuyTwoDifferentBooks(params int[] numbers)
+        public void TwoDifferentBooksResultsIn5PercentDiscount(params int[] numbers)
         {
-            // Arange
-            BookCalculator calculator = new BookCalculator();
             decimal targetPrice = 2m * 8m * 0.95m;
-
-            // Act
             decimal result = calculator.Calculate(numbers);
-
-            // Assert
             Assert.That(result, Is.EqualTo(targetPrice));
         }
 
