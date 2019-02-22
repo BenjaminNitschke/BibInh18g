@@ -5,14 +5,10 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("Bookstore")]
-[assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Bookstore")]
-[assembly: AssemblyCopyright("Copyright ©  2019")]
-[assembly: AssemblyTrademark("")]
-[assembly: AssemblyCulture("")]
+[assembly: AssemblyTitle("HarryPotterKata")]
+[assembly: AssemblyCompany("Jomshanse")]
+[assembly: AssemblyProduct("HarryPotterKata")]
+[assembly: AssemblyCopyright("Juri Weber ©  2019")]
 
 // Durch Festlegen von ComVisible auf FALSE werden die Typen in dieser Assembly
 // für COM-Komponenten unsichtbar.  Wenn Sie auf einen Typ in dieser Assembly von
@@ -20,7 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Die folgende GUID bestimmt die ID der Typbibliothek, wenn dieses Projekt für COM verfügbar gemacht wird
-[assembly: Guid("32c3a879-3575-415a-b0c7-e5918132800f")]
+[assembly: Guid("c1d9ec10-75c8-4dc2-8d49-b20530f9f998")]
 
 // Versionsinformationen für eine Assembly bestehen aus den folgenden vier Werten:
 //
