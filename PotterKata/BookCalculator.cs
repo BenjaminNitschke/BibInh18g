@@ -20,20 +20,33 @@ namespace PotterKata
         };
 
         private decimal pricePerBook = 8.0m;
-        
-        public decimal Calculate(params int[] books)
-        {
-            List<int> kindOfBooks = new List<int>();
-					for (int i = 0; i < books.Length; i++)
-					{
-						if (!availableBooks.Contains(books[i]))
-							return 0;
-						if (!kindOfBooks.Contains(books[i]))
-							kindOfBooks.Add(books[i]);
-					}
 
-					decimal price = books.Length * pricePerBook;
-						price *= 1 - discounts[kindOfBooks.Count];
+        public decimal Calculate(List<int> books)
+        {
+            List<List<int>> uniqueBooks = new List<List<int>>();
+            while (books.Count > 0)
+            {
+                uniqueBooks.Add(new List<int>());
+                for (int i = 0; i < uniqueBooks.Count; i++)
+                {
+                    for (int j = books.Count-1; j >= 0; j--)
+                    {
+                        if (!uniqueBooks[i].Contains(books[j]))
+                        {
+                            uniqueBooks[i].Add(books[j]);
+                            books.RemoveAt(j);
+                        }
+                        else
+                        {
+                            uniqueBooks.Add(new List<int>());
+                        }
+                    }
+                }
+            }
+
+            decimal price = 0;
+            foreach (var bookRow in uniqueBooks)
+                price += (bookRow.Count * pricePerBook) * (1 - discounts[bookRow.Count]);
             return price;
         }
     }
