@@ -21,7 +21,7 @@ public class EnemyAi : MonoBehaviour
 		{
 			velocity *= -1;
 			offset += velocity * Time.deltaTime;
-			transform.position = new Vector3(startPositionX+offset, transform.position.y-MoveCloserToPlayerPerDirectionChange);
+			transform.position = new Vector3(transform.position.x, transform.position.y-MoveCloserToPlayerPerDirectionChange);
 		}
 		transform.position = new Vector3(startPositionX+offset, transform.position.y);
 	}
