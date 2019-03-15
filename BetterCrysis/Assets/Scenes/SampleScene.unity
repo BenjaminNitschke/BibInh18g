@@ -369,6 +369,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faea9e7dad928fd44a8b7db064092cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Bullet: {fileID: 1172510454919738, guid: 651dbcc7e9522d541b1368d123770754, type: 2}
+  BulletOffset: 0.7
+  BulletForce: 500
   State: 0
 --- !u!54 &739458530
 Rigidbody:
