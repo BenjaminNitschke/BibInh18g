@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Fog.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\RotateAroundCenter.cs" />
     <Compile Include="Assets\RotateCube.cs" />
