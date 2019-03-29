@@ -62,9 +62,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Fog.cs" />
+    <Compile Include="Assets\Menu\CreditsState.cs" />
+    <Compile Include="Assets\Menu\ExitState.cs" />
+    <Compile Include="Assets\Menu\LoadGameState.cs" />
+    <Compile Include="Assets\Menu\MainMenuState.cs" />
+    <Compile Include="Assets\Menu\MenuState.cs" />
+    <Compile Include="Assets\Menu\NewGameState.cs" />
+    <Compile Include="Assets\Menu\OptionsState.cs" />
+    <Compile Include="Assets\MenuStateMachine.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\RotateAroundCenter.cs" />
     <Compile Include="Assets\RotateCube.cs" />
+    <Compile Include="Assets\UpdateAmmunition.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/Boje/Documents/GitHub/BibInh18g/BetterCrysis/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
