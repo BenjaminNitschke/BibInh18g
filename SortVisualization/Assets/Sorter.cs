@@ -1,62 +1,65 @@
-﻿using System.Linq;
+﻿using System.Collections;
 using UnityEngine;
 
+// ReSharper disable once UnusedMember.Global
+// ReSharper disable once CheckNamespace
 public class Sorter : MonoBehaviour
 {
-    private Material defaultMaterial, compareMaterial, limitMaterial;
-
-	void Start()
+	private void Start()
 	{
-		list = GameObject.FindObjectsOfType<MeshRenderer>();
-        defaultMaterial = list[0].material;
-        compareMaterial = Resources.Load<Material>("Materials/Compare");
-        limitMaterial = Resources.Load<Material>("Materials/Limit");
-    }
+		list = FindObjectsOfType<MeshRenderer>();
+		defaultMaterial = list[0].material;
+		compareMaterial = Resources.Load<Material>("compareMaterial");
+		limitMaterial = Resources.Load<Material>("limitMaterial");
+		smallestMaterial = Resources.Load<Material>("smallestMaterial");
+		StartCoroutine("SortAll");
+	}
 
 	private MeshRenderer[] list;
-	private int iteration = 0;
-	private float timePassed = 0;
+	private int iteration;
+	private Material defaultMaterial;
+	private Material compareMaterial;
+	private Material limitMaterial;
+	private Material smallestMaterial;
 
-	void Update()
+	private IEnumerator SortAll()
 	{
-		timePassed += Time.deltaTime;
-		if (timePassed > 1)
+		for (iteration = list.Length-1; iteration >= 0; iteration--)
 		{
-			timePassed -= 1;
-			if (iteration < list.Length - 1)
+			var biggest = list[iteration].transform.localScale.x;
+			var biggestIndex = iteration;
+			for (int i = 0; i < iteration; i++)
 			{
-				var smallestIndex = FindSmallestIndex(list, iteration);
-				Swap(list, smallestIndex, iteration);
-				SetPositionAndMaterialOfAllSortedGameObjects(list);
+				if (list[i].transform.localScale.x > biggest)
+				{
+					biggest = list[i].transform.localScale.x;
+					biggestIndex = i;
+				}
+				SetPositionAndMaterialOfAllSortedGameObjects(i, biggestIndex);
+				yield return new WaitForSeconds(0.01f);
 			}
-			iteration++;
+			if (biggestIndex != iteration)
+				Swap(list, biggestIndex, iteration);
 		}
 	}
 	
-	private void SetPositionAndMaterialOfAllSortedGameObjects(MeshRenderer[] list)
+	private void SetPositionAndMaterialOfAllSortedGameObjects(int currentIndex, int smallestIndex)
 	{
 		for (int i = 0; i < list.Length; i++)
-        {
-            list[i].transform.position = i * new Vector3(3, 0, 0);
-            list[i].material = i == iteration ? compareMaterial : i == iteration + 1 ? limitMaterial : defaultMaterial;
-        }
-			
+		{
+			list[i].transform.position = i * new Vector3(3, 0, 0);
+			if (i == iteration)
+				list[i].material = limitMaterial;
+			else if (i == currentIndex)
+				list[i].material = compareMaterial;
+			else if (i == smallestIndex)
+				list[i].material = smallestMaterial;
+			else
+				list[i].material = defaultMaterial;
+		}
 	}
-
-	private int FindSmallestIndex(MeshRenderer[] list, int iteration)
-	{
-		var smallest = list[iteration].transform.localScale.x;
-		var smallestIndex = iteration;
-		for (int i=iteration+1; i<list.Length; i++)
-			if (list[i].transform.localScale.x < smallest)
-			{
-				smallest = list[i].transform.localScale.x;
-				smallestIndex = i;
-			}
-		return smallestIndex;
-	}
-
-	private void Swap(MeshRenderer[] list, int first, int second)
+	
+	private static void Swap(MeshRenderer[] list, int first, int second)
 	{
 		var rememberValue = list[first];
 		list[first] = list[second];
