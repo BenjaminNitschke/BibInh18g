@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 
+// ReSharper disable once UnusedMember.Global
+// ReSharper disable once CheckNamespace
 public class MissileCollider : MonoBehaviour {
-	
+
 	void Update ()
 	{
 		transform.position = new Vector3(transform.position.x,
