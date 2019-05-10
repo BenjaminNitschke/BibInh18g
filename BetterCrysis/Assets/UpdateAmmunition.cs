@@ -17,5 +17,8 @@ public class UpdateAmmunition : MonoBehaviour
 	void Update ()
     {
         text.text = "Munition: " + currentAmmunition;
+
+        if (Input.GetKeyDown(KeyCode.R))
+            currentAmmunition = 100;
 	}
 }

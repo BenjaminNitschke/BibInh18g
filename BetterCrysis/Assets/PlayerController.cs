@@ -59,10 +59,10 @@ public class PlayerController : MonoBehaviour
 			// Actually fire bullets yo
             if(ammo.currentAmmunition > 0 && ammo != null)
             {
-            var newBullet = Instantiate(Bullet, transform.position + transform.forward * BulletOffset, Quaternion.identity);
-            newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * BulletForce);
+                var newBullet = Instantiate(Bullet, transform.position + transform.forward * BulletOffset, Quaternion.identity);
+                newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * BulletForce);
 
-            ammo.currentAmmunition--;
+                ammo.currentAmmunition--;
             }
 			
 			// Stop shooting when mouse is released

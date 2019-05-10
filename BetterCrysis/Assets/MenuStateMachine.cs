@@ -17,11 +17,19 @@ public class MenuStateMachine : MonoBehaviour
     {
 		states = new Stack<MenuState>();
         states.Push(new MainMenuState());
+        ActivateState();
     }
 
 	void Update ()
     {
-		
+        Debug.Log("Update");
+        if (Input.GetKeyDown(KeyCode.Backspace) && states.Count > 1)
+        {
+            states.Pop();
+            ActivateState();
+            Debug.Log("Test");
+        }
+            
 	}
 
     public void OnMenuClick(int input)
@@ -32,28 +40,33 @@ public class MenuStateMachine : MonoBehaviour
         {
             case MenuButton.NEW:
                 states.Push(new NewGameState());
-                states.Peek().Execute();
+                ActivateState();
                 break;
             case MenuButton.LOAD:
                 states.Push(new LoadGameState());
-                states.Peek().Execute();
+                ActivateState();
                 break;
             case MenuButton.OPTIONS:
                 states.Push(new OptionsState());
-                states.Peek().Execute();
+                ActivateState();
                 break;
             case MenuButton.CREDITS:
                 states.Push(new CreditsState());
-                states.Peek().Execute();
+                ActivateState();
                 break;
             case MenuButton.EXIT:
                 states.Push(new ExitState());
-                states.Peek().Execute();
+                ActivateState();
                 break;
 
             default:
                 Debug.Log("Please implement a MenuState for this");
                 break;
         }
+    }
+
+    private void ActivateState()
+    {
+        states.Peek().Execute();
     }
 }
