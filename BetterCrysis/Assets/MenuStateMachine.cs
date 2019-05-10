@@ -25,6 +25,8 @@ public class MenuStateMachine : MonoBehaviour {
 				break;
 			case (int)MenuButton.Credits:
 				State = new CreditsState();
+				//TODO: go into new unity scene and do not show main menu anymore
+				//TODO: allow to go back to main menu, use Stack
 				break;
 			case (int)MenuButton.Exit:
 				State = new ExitState();

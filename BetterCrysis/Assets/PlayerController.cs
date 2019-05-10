@@ -1,6 +1,4 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Experimental.UIElements;
+﻿using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,7 +21,7 @@ public class PlayerController : MonoBehaviour
 				GetComponent<Rigidbody>().AddForce(transform.up*200);
 				State = PlayerAnimationStates.Jumping;
 			}
-			if (Input.GetMouseButton((int)MouseButton.LeftMouse))
+			if (Input.GetMouseButton(0))
 			{
 				Debug.Log("start shooting");
 				GetComponent<AudioSource>().Play();
@@ -55,7 +53,7 @@ public class PlayerController : MonoBehaviour
 			GameObject.Find("AmmunitionText").GetComponent<UpdateAmmunition>().CurrentAmmunition--;
 			newBullet.GetComponent<Rigidbody>().AddForce(transform.forward * BulletForce);
 			// Stop shooting when mouse is released
-			if (!Input.GetMouseButton((int)MouseButton.LeftMouse))
+			if (!Input.GetMouseButton(0))
 			{
 				Debug.Log("stopped shooting");
 				State = PlayerAnimationStates.Running;

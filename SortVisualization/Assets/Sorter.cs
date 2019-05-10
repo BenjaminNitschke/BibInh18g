@@ -39,6 +39,14 @@ public class Sorter : MonoBehaviour
 
 	private IEnumerator Partition(int lo, int hi, Action<int> result)
 	{
+		// Median of three optimization
+		var mid = (lo + hi) / 2;
+		if (list[mid].transform.localScale.x < list[lo].transform.localScale.x)
+			Swap(list, lo, mid);
+		if (list[hi].transform.localScale.x < list[lo].transform.localScale.x)
+			Swap(list, lo, hi);
+		if (list[mid].transform.localScale.x < list[hi].transform.localScale.x)
+			Swap(list, mid, hi);
 		float pivot = list[hi].transform.localScale.x;
 		int i = lo;
 		for (int j = lo; j < hi; j++)
@@ -50,11 +58,11 @@ public class Sorter : MonoBehaviour
 				list[i].material = swapMaterial;
 				i++;
 			}
-			yield return new WaitForSeconds(1f);
+			yield return new WaitForSeconds(0.01f);
 		}
 		Swap(list, i, hi);
 		SetPositionAndMaterialOfAllSortedGameObjects(lo, i, hi);
-		yield return new WaitForSeconds(1f);
+		yield return new WaitForSeconds(0.01f);
 		result(i);
 	}
 	
