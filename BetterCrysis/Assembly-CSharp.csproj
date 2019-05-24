@@ -69,6 +69,7 @@
     <Compile Include="Assets\Menu\MenuState.cs" />
     <Compile Include="Assets\Menu\NewGameState.cs" />
     <Compile Include="Assets\Menu\OptionsState.cs" />
+    <Compile Include="Assets\MenuButton.cs" />
     <Compile Include="Assets\MenuStateMachine.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\RotateAroundCenter.cs" />

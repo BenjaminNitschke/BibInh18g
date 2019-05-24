@@ -4,6 +4,8 @@ public class PlayerController : MonoBehaviour
 {
 	void Update ()
 	{
+		if (MenuState.State.GetType() != typeof(NewGameState))
+			return;
 		transform.position += MoveSpeed * transform.forward * Input.GetAxis("Vertical") * Time.deltaTime;
 		transform.Rotate(0, RotateSpeed * Input.GetAxis("Horizontal") * Time.deltaTime, 0);
 		HandleState();
