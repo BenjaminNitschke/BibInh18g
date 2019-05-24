@@ -1,13 +1,13 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace Assets.Menu
+public class SceneDictator : MonoBehaviour
 {
-    public class CreditsState : MenuState
+    void Update()
     {
-        public override void Execute()
+        if(Input.GetKey(KeyCode.Backspace))
         {
-            Debug.Log("Developed by Jann Lüllmann");
             AsyncOperation operation = SceneManager.UnloadSceneAsync("MenuScene");
             operation.completed += asyncOperation =>
                 SceneManager.LoadScene("Credits", LoadSceneMode.Additive);

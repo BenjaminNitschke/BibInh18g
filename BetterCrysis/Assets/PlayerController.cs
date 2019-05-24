@@ -1,6 +1,5 @@
-﻿using System;
-using UnityEngine;
-using UnityEngine.Experimental.UIElements;
+﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
