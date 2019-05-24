@@ -57,11 +57,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-TextAdventure/app.config
+app.config
 packages/
-.vs/
+_NCrunch*
 Library/
-Logs/
-Packages/
+ProjectSettings/
 Temp/
-*.cache
